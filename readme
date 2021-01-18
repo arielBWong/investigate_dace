@@ -1,0 +1,13 @@
+examples of oodace default setting problem
+use problem: prob = 'Shekel_curve()'
+(---optional) in matlab add path: Utility, problems, ooDACE-1.4, ND_sort, globalsolver
+run parameter_ei.m to set parameters: 	
+									param_ei.init_size = 5; 
+								    param_ei.iter_size = 50; 
+run: believerdemo.m
+
+behaviour:
+by the 26th iteration,  the approximation starts to deteriorate 
+
+
+	 

@@ -1,0 +1,32 @@
+Readme on EIMnext method
+
+The EIMnext method is always paired up with EIM_eval type method 
+EIMnext needs EIM_eval as objective function to search for next point
+ 
+EIM_eval is seperated for plot later purpose 
+
+* Problems that triggered investigation
+For oodace which seed generate problem
+init 5 points, iteration  50
+(1) rastrigin(1, 1), seed 3, from iteration 36, unique check fails, dace keep proposing the same point 
+(2) shekel(1, 1), seed 3, approximation function goes wrong from time to time
+(3) shekel_curve(1, 1), seed 2, approximation function fail to generate smooth curve since iteration 26 
+
+* For dace which seed generates problem
+(1) rastrigin, seed 1, multiple fails in approximation over iteration.
+    saved the last iteration (54 points) and test on the given approximation code to check the rebuild, 
+	same as in the general code
+(2) shekel_curve(1, 1), seed 1,  start from iteration 12, look stuck in local minimum
+				        seed 2,   fail to generate smooth curve at a few iterations, can recover from there
+(3)	shekel(1, 1), seed 2, start from iteration 20, can fail in approximation, but can recover from iteration
+(4) Shekel_curve(1, 1), seed 2, iteration 6, check EA search 
+
+* Solution
+Solution: for dace training, using multiple restart method. Multiple restart with randomly initialized theta 
+		  in method Train_DACE.m
+		  
+* Conclusion
+Problems of failing approximation is largely solved
+Problem of stucking in local region is automatically fixed when EI landscape is too sharp, global search 
+fails to identify that sharp spike, consequently escape local region.
+
