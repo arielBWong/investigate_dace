@@ -9,5 +9,19 @@ run: believerdemo.m
 behaviour:
 by the 26th iteration,  the approximation starts to deteriorate 
 
+* Potential trap in Train_DACE method
+hyperparameter training inialize theta range [lb, ub] as in line: 
+Fit_DACE(X, Y, @Regpoly0, @Corrgauss, theta_start', lb, ub);
+
+How lb ub is decided? X is training data
+
+range = minmax(X');
+lb    = max(1e-6,range(:,1));
+ub    = range(:,2);
+
+Problem is if lb is 1e-6 or beyond
+              ub > lb, 
+		   then 
+			  Training data CANNOT have a range smaller than 0
 
 	 

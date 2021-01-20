@@ -1,5 +1,5 @@
 function[best_x, info] = EIMnext_daceUpdate(train_x, train_y, xu_bound, xl_bound, ...
-                                 num_pop, num_gen, train_c, fithn, normhn, varargin)
+                                 num_pop, num_gen, train_c, normhn, varargin)
 %--------------------------------------------------------------------------
 
 fighn        = varargin{1};
